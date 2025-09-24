@@ -7,11 +7,18 @@ import jakarta.validation.constraints.Size;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-
 import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
+/**
+ * User Entity for Enterprise Resource Planning System
+ * 
+ * Represents system users with proper JPA mapping, validation,
+ * and audit capabilities.
+ * 
+ * @author Gabriel Demetrios Lafis
+ */
 @Entity
 @Table(name = "users")
 @EntityListeners(AuditingEntityListener.class)
@@ -105,5 +112,31 @@ public class User {
     
     public String getFullName() {
         return firstName + " " + lastName;
+    }
+    
+    // Helper methods for role management
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+    
+    public void removeRole(Role role) {
+        this.roles.remove(role);
+    }
+    
+    public boolean hasRole(String roleName) {
+        return roles.stream()
+                .anyMatch(role -> role.getName().name().equals(roleName));
+    }
+    
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", isActive=" + isActive +
+                '}';
     }
 }
