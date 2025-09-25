@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="#{page.title.home}">ERP System - Enterprise Resource Planning</title>
+    
+    <!-- Bootstrap CSS -->
+    <link th:href="@{/webjars/bootstrap/5.3.2/css/bootstrap.min.css}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link th:href="@{/css/main.css}" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-building"></i>
+                <span th:text="#{app.name}">ERP System</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" th:href="@{/}" th:text="#{nav.home}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/dashboard}" th:text="#{nav.dashboard}">Dashboard</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            <span th:text="#{nav.modules}">Modules</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" th:href="@{/inventory}" th:text="#{nav.inventory}">Inventory</a></li>
+                            <li><a class="dropdown-item" th:href="@{/financial}" th:text="#{nav.financial}">Financial</a></li>
+                            <li><a class="dropdown-item" th:href="@{/hr}" th:text="#{nav.hr}">Human Resources</a></li>
+                            <li><a class="dropdown-item" th:href="@{/crm}" th:text="#{nav.crm}">CRM</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/reports}" th:text="#{nav.reports}">Reports</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}" th:text="#{nav.login}">Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 fw-bold text-primary" th:text="#{home.hero.title}">Enterprise Resource Planning System</h1>
+                    <p class="lead text-muted" th:text="#{home.hero.subtitle}">A comprehensive ERP solution designed for modern businesses to streamline operations, improve efficiency, and drive growth.</p>
+                    <div class="mt-4">
+                        <a th:href="@{/dashboard}" class="btn btn-primary btn-lg me-3" th:text="#{button.get_started}">Get Started</a>
+                        <a th:href="@{/demo}" class="btn btn-outline-primary btn-lg" th:text="#{button.view_demo}">View Demo</a>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="text-center">
+                        <i class="fas fa-chart-line text-primary" style="font-size: 12rem; opacity: 0.1;"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12 text-center mb-5">
+                <h2 class="h1 fw-bold" th:text="#{home.features.title}">Core Features</h2>
+                <p class="text-muted" th:text="#{home.features.subtitle}">Powerful modules to manage every aspect of your business</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <!-- Inventory Management -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-boxes text-success" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title" th:text="#{home.feature.inventory.title}">Inventory Management</h5>
+                        <p class="card-text text-muted" th:text="#{home.feature.inventory.description}">Real-time stock tracking, automated reordering, and comprehensive inventory analytics.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Financial Management -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-pie text-warning" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title" th:text="#{home.feature.financial.title}">Financial Management</h5>
+                        <p class="card-text text-muted" th:text="#{home.feature.financial.description}">Complete accounting solution with invoicing, reporting, and financial analytics.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Human Resources -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-users text-info" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title" th:text="#{home.feature.hr.title}">Human Resources</h5>
+                        <p class="card-text text-muted" th:text="#{home.feature.hr.description}">Employee management, payroll processing, and performance tracking.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- CRM -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-handshake text-danger" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title" th:text="#{home.feature.crm.title}">Customer Relationship Management</h5>
+                        <p class="card-text text-muted" th:text="#{home.feature.crm.description}">Lead tracking, customer service management, and sales analytics.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Business Intelligence -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-chart-bar text-primary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title" th:text="#{home.feature.bi.title}">Business Intelligence</h5>
+                        <p class="card-text text-muted" th:text="#{home.feature.bi.description}">Advanced analytics, reporting dashboards, and predictive insights.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Security -->
+            <div class="col-lg-4 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center p-4">
+                        <div class="mb-3">
+                            <i class="fas fa-shield-alt text-secondary" style="font-size: 3rem;"></i>
+                        </div>
+                        <h5 class="card-title" th:text="#{home.feature.security.title}">Enterprise Security</h5>
+                        <p class="card-text text-muted" th:text="#{home.feature.security.description}">Role-based access control, JWT authentication, and data encryption.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="bg-primary text-white py-5">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="mb-2">
+                        <i class="fas fa-building" style="font-size: 2rem;"></i>
+                    </div>
+                    <h3 class="h2 fw-bold" th:text="#{home.stats.companies}">500+</h3>
+                    <p th:text="#{home.stats.companies.label}">Companies Trust Us</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="mb-2">
+                        <i class="fas fa-users" style="font-size: 2rem;"></i>
+                    </div>
+                    <h3 class="h2 fw-bold" th:text="#{home.stats.users}">10,000+</h3>
+                    <p th:text="#{home.stats.users.label}">Active Users</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="mb-2">
+                        <i class="fas fa-clock" style="font-size: 2rem;"></i>
+                    </div>
+                    <h3 class="h2 fw-bold" th:text="#{home.stats.uptime}">99.9%</h3>
+                    <p th:text="#{home.stats.uptime.label}">System Uptime</p>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="mb-2">
+                        <i class="fas fa-headset" style="font-size: 2rem;"></i>
+                    </div>
+                    <h3 class="h2 fw-bold" th:text="#{home.stats.support}">24/7</h3>
+                    <p th:text="#{home.stats.support.label}">Customer Support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h6 class="fw-bold" th:text="#{footer.title}">Enterprise Resource Planning System</h6>
+                    <p class="text-muted small" th:text="#{footer.description}">Professional ERP solution for modern businesses.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="text-muted small mb-1" th:text="#{footer.author}">Created by Gabriel Demetrios Lafis</p>
+                    <p class="text-muted small mb-0" th:text="#{footer.copyright}">© 2025 ERP System. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script th:src="@{/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js}"></script>
+    <script th:src="@{/webjars/jquery/3.7.1/jquery.min.js}"></script>
+    
+    <!-- Custom JS -->
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>
