@@ -1,11 +1,13 @@
 package com.galafis.erp.repository;
 
 import com.galafis.erp.entity.User;
+import com.galafis.erp.entity.Role;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
@@ -13,10 +15,11 @@ import java.util.Optional;
 /**
  * Repository interface for User entity
  * 
- * Provides data access layer for User operations including:
+ * Provides comprehensive data access layer for User operations including:
  * - Basic CRUD operations through JpaRepository
  * - Custom query methods for business requirements
  * - User authentication and authorization support
+ * - Advanced search and filtering capabilities
  * 
  * @author Gabriel Demetrios Lafis
  */
@@ -51,19 +54,20 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * Find all users with a specific role
      * Used for role-based management
      */
-    List<User> findByRole(String role);
+    @Query("SELECT u FROM User u JOIN u.roles r WHERE r.name = :roleName")
+    List<User> findByRoleName(@Param("roleName") String roleName);
     
     /**
-     * Find all enabled users
+     * Find all active users
      * Used for active user management
      */
-    List<User> findByEnabledTrue();
+    List<User> findByIsActiveTrue();
     
     /**
-     * Find all disabled users
+     * Find all inactive users
      * Used for user administration
      */
-    List<User> findByEnabledFalse();
+    List<User> findByIsActiveFalse();
     
     /**
      * Find users created within a specific date range
@@ -74,11 +78,11 @@ public interface UserRepository extends JpaRepository<User, Long> {
                                           @Param("endDate") LocalDateTime endDate);
     
     /**
-     * Find users who have logged in recently
+     * Find users who have been updated recently
      * Used for activity monitoring
      */
-    @Query("SELECT u FROM User u WHERE u.lastLogin >= :since ORDER BY u.lastLogin DESC")
-    List<User> findRecentlyActiveUsers(@Param("since") LocalDateTime since);
+    @Query("SELECT u FROM User u WHERE u.updatedAt >= :since ORDER BY u.updatedAt DESC")
+    List<User> findRecentlyUpdatedUsers(@Param("since") LocalDateTime since);
     
     /**
      * Search users by name or username
@@ -94,13 +98,50 @@ public interface UserRepository extends JpaRepository<User, Long> {
      * Count users by role
      * Used for dashboard statistics
      */
-    @Query("SELECT COUNT(u) FROM User u WHERE u.role = :role")
-    long countByRole(@Param("role") String role);
+    @Query("SELECT COUNT(u) FROM User u JOIN u.roles r WHERE r.name = :roleName")
+    long countByRoleName(@Param("roleName") String roleName);
     
     /**
-     * Update user's last login timestamp
-     * Used during authentication process
+     * Count active users
+     * Used for dashboard statistics
      */
-    @Query("UPDATE User u SET u.lastLogin = :loginTime WHERE u.id = :userId")
-    void updateLastLogin(@Param("userId") Long userId, @Param("loginTime") LocalDateTime loginTime);
+    long countByIsActiveTrue();
+    
+    /**
+     * Count inactive users
+     * Used for dashboard statistics
+     */
+    long countByIsActiveFalse();
+    
+    /**
+     * Find users without any roles
+     * Used for user management and validation
+     */
+    @Query("SELECT u FROM User u WHERE u.roles IS EMPTY")
+    List<User> findUsersWithoutRoles();
+    
+    /**
+     * Find users with multiple roles
+     * Used for privilege analysis
+     */
+    @Query("SELECT u FROM User u WHERE SIZE(u.roles) > 1")
+    List<User> findUsersWithMultipleRoles();
+    
+    /**
+     * Deactivate user by ID
+     * Used for user management
+     */
+    @Modifying
+    @Transactional
+    @Query("UPDATE User u SET u.isActive = false, u.updatedAt = CURRENT_TIMESTAMP WHERE u.id = :userId")
+    void deactivateUser(@Param("userId") Long userId);
+    
+    /**
+     * Activate user by ID
+     * Used for user management
+     */
+    @Modifying
+    @Transactional
+    @Query("UPDATE User u SET u.isActive = true, u.updatedAt = CURRENT_TIMESTAMP WHERE u.id = :userId")
+    void activateUser(@Param("userId") Long userId);
 }
