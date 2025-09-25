@@ -1,0 +1,2 @@
+# This file ensures the ssl directory is tracked by Git
+# Place SSL certificates (.crt, .key, .pem files) in this directory for production deployments
