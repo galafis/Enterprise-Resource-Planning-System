@@ -1,6 +1,10 @@
 # 🏢 Enterprise Resource Planning System
 
 <p align="center">
+  <img src="./hero_image.png" alt="Enterprise Resource Planning System Hero Image" width="700"/>
+</p>
+
+<p align="center">
   <img alt="Java" src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
   <img alt="Spring Boot" src="https://img.shields.io/badge/Spring_Boot-3.2-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" />
   <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
@@ -322,3 +326,4 @@ Gabriel Demetrios Lafis  •  GitHub: [@galafis](https://github.com/galafis)  �
 - Link to docs center: see `/docs` for API, guides, and architecture
 - Add Postman collection under `/docs/api/postman`
 - Add CHANGELOG under `/docs/changelog`
+
