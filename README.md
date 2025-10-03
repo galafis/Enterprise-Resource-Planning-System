@@ -1,5 +1,7 @@
 # 🏢 Enterprise Resource Planning System
 
+## 🖼️ Imagem Hero
+
 <p align="center">
   <img src="./hero_image.png" alt="Enterprise Resource Planning System Hero Image" width="700"/>
 </p>
