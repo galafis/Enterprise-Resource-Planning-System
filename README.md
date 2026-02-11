@@ -7,12 +7,6 @@
 </p>
 
 <p align="center">
-  <img alt="Java" src="https://img.shields.io/badge/Java-17-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
-  <img alt="Spring Boot" src="https://img.shields.io/badge/Spring_Boot-3.2-6DB33F?style=for-the-badge&logo=spring-boot&logoColor=white" />
-  <img alt="MySQL" src="https://img.shields.io/badge/MySQL-8.0-4479A1?style=for-the-badge&logo=mysql&logoColor=white" />
-  <img alt="Maven" src="https://img.shields.io/badge/Maven-3.8+-C71A36?style=for-the-badge&logo=apache-maven&logoColor=white" />
-  <img alt="Redis" src="https://img.shields.io/badge/Redis-Optional-DC382D?style=for-the-badge&logo=redis&logoColor=white" />
-  <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" />
 </p>
 
 <p align="center"><strong>🚀 Modern Enterprise Resource Planning System built with Java Spring Boot</strong></p>
@@ -318,7 +312,6 @@ Gabriel Demetrios Lafis  •  GitHub: [@galafis](https://github.com/galafis)  �
 
 ---
 
-### 🏷️ Suggested Badges (optional)
 - Build: GitHub Actions (CI)
 - Coverage: JaCoCo
 - Quality: SonarCloud
