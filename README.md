@@ -1,324 +1,225 @@
-# 🏢 Enterprise Resource Planning System
+# 🚀 Enterprise Resource Planning System
 
-## 🖼️ Imagem Hero
+[![Java](https://img.shields.io/badge/Java-21-red.svg)](https://www.java.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-2496ED.svg)](https://www.docker.com/)
+[![Redis](https://img.shields.io/badge/Redis-7-DC382D.svg)](https://redis.io/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-<p align="center">
-  <img src="./hero_image.png" alt="Enterprise Resource Planning System Hero Image" width="700"/>
-</p>
-
-<p align="center">
-</p>
-
-<p align="center"><strong>🚀 Modern Enterprise Resource Planning System built with Java Spring Boot</strong></p>
-
-<p align="center">
-  <a href="#english">🇺🇸 English</a> |
-  <a href="#português">🇧🇷 Português</a>
-</p>
+[English](#english) | [Português](#português)
 
 ---
 
-## 🇺🇸 English
+## English
 
-### 📋 Overview
-A comprehensive Enterprise Resource Planning (ERP) system designed for modern businesses. This system integrates inventory management, financial tracking, human resources, CRM, and analytics into a unified platform.
+### 🎯 Overview
 
-### ✨ Features
-#### 🏭 Core Modules
-- 📦 Inventory Management – Real-time stock tracking and automated reordering
-- 💰 Financial Management – Accounting, invoicing, and financial reporting
-- 👥 Human Resources – Employee management, payroll, performance tracking
-- 🤝 CRM – Lead management and customer support
-- 📊 Business Intelligence – Analytics dashboards and reporting
+**Enterprise Resource Planning System** — Professional Enterprise-Resource-Planning-System - Created by Gabriel Demetrios Lafis
 
-#### 🔧 Technical Features
-- 🔐 Role-based Access Control (JWT + Spring Security)
-- 📱 Responsive UI (Thymeleaf + Bootstrap)
-- 🔄 Real-time updates (where applicable)
-- 🌐 i18n ready (multi-language)
-- ☁️ Cloud-ready, containerized deployment
-- 📈 Observability (Spring Boot Actuator)
+Total source lines: **7,249** across **39** files in **6** languages.
 
-### 🛠️ Technology Stack
-- Backend: Java 17, Spring Boot 3.2, Spring Security, Spring Data JPA, Validation
-- Database: MySQL 8.0; H2 (tests); Redis (optional caching)
-- Frontend: Thymeleaf, Bootstrap 5, WebJars
-- Build: Maven 3.8+
-- Testing: JUnit 5, Mockito, Testcontainers, Jacoco
-- Docs: springdoc-openapi (Swagger UI)
+### ✨ Key Features
+
+- **Production-Ready Architecture**: Modular, well-documented, and following best practices
+- **Comprehensive Implementation**: Complete solution with all core functionality
+- **Clean Code**: Type-safe, well-tested, and maintainable codebase
+- **Easy Deployment**: Docker support for quick setup and deployment
 
 ### 🚀 Quick Start
+
 #### Prerequisites
-- Java 17+
-- Maven 3.8+
-- MySQL 8.0+
-- Redis (optional, for caching)
+- Java 21+ and Maven
+- Docker and Docker Compose (optional)
 
 #### Installation
-1) Clone the repository
+
+1. **Clone the repository**
 ```bash
 git clone https://github.com/galafis/Enterprise-Resource-Planning-System.git
 cd Enterprise-Resource-Planning-System
 ```
-2) Create database
-```sql
--- MySQL
-CREATE DATABASE erp_system;
-```
-3) Configure application properties
-```yaml
-# src/main/resources/application.yml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/erp_system
-    username: your_username
-    password: your_password
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  redis:
-    host: localhost
-    port: 6379
-  profiles:
-    active: dev
 
-jwt:
-  secret: change_me_in_production
-```
-4) Build and run
+2. **Build the project**
 ```bash
 mvn clean install
+```
+
+#### Running
+
+```bash
 mvn spring-boot:run
 ```
-5) Access the app
+
+## 🐳 Docker
+
+```bash
+# Build and start
+docker-compose up -d
+
+# View logs
+docker-compose logs -f
+
+# Stop
+docker-compose down
 ```
-http://localhost:8080
-```
+
+
+
 
 ### 📁 Project Structure
+
 ```
 Enterprise-Resource-Planning-System/
+├── docker/
+│   ├── mysql/
+│   │   └── init.sql
+│   ├── nginx/
+│   │   └── ssl/
+│   ├── scripts/
+│   │   ├── backup.sh
+│   │   ├── build.sh
+│   │   └── deploy.sh
+│   ├── README.md
+│   └── docker-compose.yml
+├── docs/
+│   ├── api/
+│   │   └── README.md
+│   ├── architecture/
+│   │   └── README.md
+│   ├── guides/
+│   │   └── README.md
+│   └── README.md
 ├── src/
 │   ├── main/
-│   │   ├── java/com/galafis/erp/
-│   │   │   ├── config/        # Configuration classes
-│   │   │   ├── controller/    # REST controllers
-│   │   │   ├── dto/           # Data Transfer Objects
-│   │   │   ├── entity/        # JPA entities
-│   │   │   ├── repository/    # Data repositories
-│   │   │   ├── security/      # Security (JWT, filters)
-│   │   │   └── service/       # Business logic
+│   │   ├── java/
 │   │   └── resources/
-│   │       ├── static/        # CSS, JS, images
-│   │       ├── templates/     # Thymeleaf templates
-│   │       └── application.yml
-│   └── test/                  # Unit and integration tests
-├── docker/                    # Docker configs, compose files, scripts
-├── docs/                      # Documentation center (API, guides, architecture)
-├── pom.xml                    # Maven configuration
-└── Dockerfile                 # Dev image
+│   └── test/
+│       └── java/
+├── README.md
+├── complete_erp_system.sh
+├── docker-compose.prod.yml
+└── docker-compose.yml
 ```
 
-### 🔐 Security
-- JWT Authentication (jjwt 0.12.x)
-- Role-based Authorization
-- Password hashing (BCrypt)
-- CSRF protection (where applicable)
-- SQL Injection prevention (parameterized queries)
-- XSS protection (input validation)
+### 🛠️ Tech Stack
 
-### 📊 API Documentation
-Swagger UI (springdoc-openapi):
-```
-http://localhost:8080/swagger-ui.html
-```
-
-### 🧪 Testing
-```bash
-# Run all tests
-mvn test
-
-# Run integration tests
-mvn verify
-
-# Generate coverage report
-mvn jacoco:report
-```
-
-### 🐳 Docker
-Development and production configurations are provided under ./docker and root compose files.
-```bash
-# Build image
-docker build -t erp-system .
-
-# Development stack
-docker-compose up -d
-
-# Production stack
-docker-compose -f docker-compose.prod.yml up -d
-```
-See docker/README.md for full details (services: erp-app, mysql, redis, nginx).
-
-### 📈 Performance & Metrics
-- Response time: < 200ms typical
-- Concurrency: 1000+ users (reference setup)
-- DB: Indexed queries
-- Cache: Redis integration
-- Actuator: /actuator/health, /actuator/metrics, /actuator/prometheus
-
-### 🤝 Contributing
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/amazing-feature`
-3. Commit changes: `git commit -m 'feat: Add amazing feature'`
-4. Push: `git push origin feature/amazing-feature`
-5. Open a Pull Request
+| Technology | Usage |
+|------------|-------|
+| Java | 29 files |
+| Shell | 4 files |
+| HTML | 3 files |
+| SQL | 1 files |
+| CSS | 1 files |
+| JavaScript | 1 files |
 
 ### 📄 License
-MIT License — see [LICENSE](LICENSE)
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+### 👤 Author
+
+**Gabriel Demetrios Lafis**
+
+- GitHub: [@galafis](https://github.com/galafis)
+- LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
 
 ---
 
-## 🇧🇷 Português
+## Português
 
-### 📋 Visão Geral
-Sistema ERP abrangente para empresas modernas. Integra módulos de estoque, finanças, RH, CRM e analytics em uma plataforma unificada.
+### 🎯 Visão Geral
 
-### ✨ Funcionalidades
-#### 🏭 Módulos Principais
-- 📦 Gestão de Estoque – Rastreamento em tempo real e reposição automática
-- 💰 Gestão Financeira – Contabilidade, faturamento e relatórios
-- 👥 Recursos Humanos – Gestão de funcionários, folha, desempenho
-- 🤝 CRM – Gestão de leads e suporte ao cliente
-- 📊 Business Intelligence – Dashboards e relatórios
+**Enterprise Resource Planning System** — Professional Enterprise-Resource-Planning-System - Created by Gabriel Demetrios Lafis
 
-#### 🔧 Recursos Técnicos
-- 🔐 RBAC (JWT + Spring Security)
-- 📱 UI responsiva (Thymeleaf + Bootstrap)
-- 🔄 Atualizações em tempo real (quando aplicável)
-- 🌐 Pronto para i18n
-- ☁️ Pronto para nuvem (containers)
-- 📈 Observabilidade (Actuator)
+Total de linhas de código: **7,249** em **39** arquivos em **6** linguagens.
 
-### 🛠️ Stack Tecnológico
-- Backend: Java 17, Spring Boot 3.2, Security, Data JPA, Validation
-- Banco: MySQL 8.0; H2 (testes); Redis (cache opcional)
-- Frontend: Thymeleaf, Bootstrap 5, WebJars
-- Build: Maven 3.8+
-- Testes: JUnit 5, Mockito, Testcontainers, Jacoco
-- Docs: springdoc-openapi (Swagger UI)
+### ✨ Funcionalidades Principais
+
+- **Arquitetura Pronta para Produção**: Modular, bem documentada e seguindo boas práticas
+- **Implementação Completa**: Solução completa com todas as funcionalidades principais
+- **Código Limpo**: Type-safe, bem testado e manutenível
+- **Fácil Implantação**: Suporte Docker para configuração e implantação rápidas
 
 ### 🚀 Início Rápido
+
 #### Pré-requisitos
-- Java 17+
-- Maven 3.8+
-- MySQL 8.0+
-- Redis (opcional, cache)
+- Java 21+ e Maven
+- Docker e Docker Compose (opcional)
 
 #### Instalação
-1) Clonar o repositório
+
+1. **Clone the repository**
 ```bash
 git clone https://github.com/galafis/Enterprise-Resource-Planning-System.git
 cd Enterprise-Resource-Planning-System
 ```
-2) Criar banco
-```sql
-CREATE DATABASE erp_system;
-```
-3) Configurar propriedades
-```yaml
-# src/main/resources/application.yml
-spring:
-  datasource:
-    url: jdbc:mysql://localhost:3306/erp_system
-    username: seu_usuario
-    password: sua_senha
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: true
-  redis:
-    host: localhost
-    port: 6379
-  profiles:
-    active: dev
 
-jwt:
-  secret: troque_no_producao
-```
-4) Compilar e executar
+2. **Build the project**
 ```bash
 mvn clean install
+```
+
+#### Execução
+
+```bash
 mvn spring-boot:run
 ```
-5) Acessar a aplicação
-```
-http://localhost:8080
-```
+
+
+
 
 ### 📁 Estrutura do Projeto
-(veja acima — igual)
 
-### 🔐 Segurança
-- Autenticação JWT (jjwt 0.12.x)
-- Autorização por Função
-- Hash de senha (BCrypt)
-- Proteção CSRF (quando aplicável)
-- Prevenção de SQL Injection (consultas parametrizadas)
-- Proteção XSS (validação de entrada)
-
-### 📊 Documentação da API
 ```
-http://localhost:8080/swagger-ui.html
+Enterprise-Resource-Planning-System/
+├── docker/
+│   ├── mysql/
+│   │   └── init.sql
+│   ├── nginx/
+│   │   └── ssl/
+│   ├── scripts/
+│   │   ├── backup.sh
+│   │   ├── build.sh
+│   │   └── deploy.sh
+│   ├── README.md
+│   └── docker-compose.yml
+├── docs/
+│   ├── api/
+│   │   └── README.md
+│   ├── architecture/
+│   │   └── README.md
+│   ├── guides/
+│   │   └── README.md
+│   └── README.md
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   └── resources/
+│   └── test/
+│       └── java/
+├── README.md
+├── complete_erp_system.sh
+├── docker-compose.prod.yml
+└── docker-compose.yml
 ```
 
-### 🧪 Testes
-```bash
-mvn test
-mvn verify
-mvn jacoco:report
-```
+### 🛠️ Stack Tecnológica
 
-### 🐳 Docker
-Vide docker/README.md e os arquivos docker-compose*.yml.
-```bash
-docker build -t erp-system .
-docker-compose up -d
-# Produção
-docker-compose -f docker-compose.prod.yml up -d
-```
-
-### 📈 Métricas & Performance
-- Tempo de resposta: < 200ms (típico)
-- Concorrência: 1000+ usuários (referência)
-- BD: Índices em consultas
-- Cache: Integração Redis
-- Actuator: /actuator/health, /actuator/metrics, /actuator/prometheus
-
-### 🤝 Contribuição
-1. Fork
-2. Branch: `git checkout -b feature/recurso`
-3. Commits: `git commit -m 'feat: adicionar recurso'`
-4. Push: `git push origin feature/recurso`
-5. PR
+| Tecnologia | Uso |
+|------------|-----|
+| Java | 29 files |
+| Shell | 4 files |
+| HTML | 3 files |
+| SQL | 1 files |
+| CSS | 1 files |
+| JavaScript | 1 files |
 
 ### 📄 Licença
-MIT — ver [LICENSE](LICENSE)
 
----
+Este projeto está licenciado sob a Licença MIT - veja o arquivo [LICENSE](LICENSE) para detalhes.
 
-### 👨‍💻 Author
-Gabriel Demetrios Lafis  •  GitHub: [@galafis](https://github.com/galafis)  •  LinkedIn: [Gabriel Lafis](https://linkedin.com/in/gabriel-lafis)
+### 👤 Autor
 
----
+**Gabriel Demetrios Lafis**
 
-- Build: GitHub Actions (CI)
-- Coverage: JaCoCo
-- Quality: SonarCloud
-- Containers: Docker
-
-### 💡 Documentation improvements
-- Link to docs center: see `/docs` for API, guides, and architecture
-- Add Postman collection under `/docs/api/postman`
-- Add CHANGELOG under `/docs/changelog`
-
+- GitHub: [@galafis](https://github.com/galafis)
+- LinkedIn: [Gabriel Demetrios Lafis](https://linkedin.com/in/gabriel-demetrios-lafis)
